@@ -1,5 +1,5 @@
 $(function() {
-    $('#btnMake').click(function() {
+    $('.btnMake').click(function() {
         parent.changePage("sentencepage.html")
     })
 })
