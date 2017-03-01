@@ -1,0 +1,25 @@
+
+#menu_box .on-off {
+    display: none;
+}
+
+/** ------------------------- **/
+
+#menu_box input[type="checkbox"].on-off + div {
+    height: 0;
+    overflow: hidden;
+}
+
+#menu_box input[type="checkbox"].on-off:checked + div {
+    /* このheightが展開後のサイズ */
+    height: 46px;
+    opacity: 1;
+}
+
+#menu_box * {/*アニメーション*/
+   -moz-transition: .5s;
+   -webkit-transition: .5s;
+   -o-transition: .5s;
+   -ms-transition: .5s;
+   transition: .5s;
+}
