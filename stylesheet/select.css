@@ -5,12 +5,12 @@
 
 /** ------------------------- **/
 
-#menu_box input[type="checkbox"].on-off + div {
+#menu_box input[type="checkbox"].on-off + form {
     height: 0;
     overflow: hidden;
 }
 
-#menu_box input[type="checkbox"].on-off:checked + div {
+#menu_box input[type="checkbox"].on-off:checked + form {
     /* このheightが展開後のサイズ */
     height: 46px;
     opacity: 1;
