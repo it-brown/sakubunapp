@@ -3,50 +3,101 @@
     <head>
         <link rel="stylesheet" href="../stylesheet/select.css" />
         <title>5W1H</title>
-
-  </script>
+        <meta charset="utf-8">
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     </head>
     <body>
         <div id="menu_box">
             <label for="check1">いつ</label>
             <input type="checkbox" id="check1" class="on-off" />
-            <form id="form1" id="id_form1">
-                <input type="text" id="txt1" id="id_txt1" size="20" maxlength="10" value="ex.1996年"><br>
-                <button type="button" class="btnMake" id="txtbx1">GO!</button>
+            <form method="POST" action="../info.php" id="form1" id="id_form1">
+                <input type="text" id="txt1" size="20" maxlength="10" value="1996年"><br>
+                <button type="submit" name="sendWhen" class="btnMake" id="txtbx1">GO!</button>
             </form>
             <label for="check2">どこで</label>
             <input type="checkbox"  id="check2" class="on-off" />
-            <form id="form2" id="id_form2">
-                <input type="text" id="txt2" id="id_txt2" size="20" maxlength="10" value="ex.バンクーバーで"><br>
-                <button type="button" class="btnMake" id="txtbx2">GO!</button>
+            <form method="POST" action="../info.php" id="form2" id="id_form2">
+                <input type="text" name="dataWhere" id="txt2" size="20" maxlength="10" value="バンクーバーで"><br>
+                <button type="submit" name="sendWhere" class="btnMake" id="txtbx2">GO!</button>
             </form>        
             <label for="check3">だれが</label>
             <input type="checkbox" id="check3" class="on-off" />
-            <form id="form3" id="id_form3">
-                <input type="text" id="txt3" id="id_txt3" size="20" maxlength="10" value="ex.ブラウンが"><br>
-                <button type="button" class="btnMake" id="txtbx3">GO!</button>
+            <form method="POST" action="../info.php" id="form3" id="id_form3">
+                <input type="text" name="dataWho" id="txt3" size="20" maxlength="10" value="ブラウンが"><br>
+                <button type="submit" name="sendWho" class="btnMake" id="txtbx3">GO!</button>
             </form>
             <label for="check4">なにを</label>    
             <input type="checkbox" id="check4" class="on-off" />
-            <form id="form4" id="id_form4">
-                <input type="text" id="txt4" id="id_txt4" size="20" maxlength="10" value="ex.生を"><br>
-                <button type="button" class="btnMake" id="txtbx4">GO!</button>
+            <form method="POST" action="../info.php" id="form4" id="id_form4">
+                <input type="text" name="dataWhat" id="txt4" size="20" maxlength="10" value="生を"><br>
+                <button type="submit" name="sendWhat" class="btnMake" id="txtbx4">GO!</button>
             </form>
             <label for="check5">どのように</label>
             <input type="checkbox" id="check5" class="on-off" />
-            <form id="form5" id="id_form5">
-                <input type="text" id="txt5" id="id_txt5" size="20" maxlength="10" value="ex.奇跡的に"><br>
-                <button type="button" class="btnMake" id="txtbx5">GO!</button>
+            <form method="POST" action="../info.php" id="form5" id="id_form5">
+                <input type="text" name="dataHow" id="txt5" size="20" maxlength="10" value="奇跡的に"><br>
+                <button type="submit" name="sendHow" class="btnMake" id="txtbx5">GO!</button>
             </form>
             <label for="check6">どうした</label>
             <input type="checkbox" id="check6" class="on-off" />
-            <form id="form6" id="id_form6">
-                <input type="text" id="txt6" id="id_txt6" size="20" maxlength="10" value="ex.うけた"><br>
-                <button type="button" class="btnMake" id="txtbx6">GO!</button>
+            <form method="POST" action="../info.php" id="form6" id="id_form6">
+                <input type="text" name="dataHappen" id="txt6" size="20" maxlength="10" value="うけた"><br>
+                <button type="submit" name="sendHappen" class="btnMake" id="txtbx6">GO!</button>
             </form>
         </div>
         <p>Powered By Brown.<p>
-        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+        <script>
+            $(function(){
+             
+                $('#txtbx1').click(function(){
+                
+                // var data = JSON.stringify($('dataWhen').val());
+                // var data = $(':text[name="dataWhen"]').val();
+
+                    var JSONdata = 
+                    {
+                        txt1: $("#txt1").val(),
+                    } 
+                    
+
+                $.ajax({
+                    type: "POST",
+                    url: "../info.php",
+                    data: JSON.stringify(JSONdata),
+                    // dataType : "JSON", 
+                    success: function(data, dataType)
+                {
+                    alert('response: '+ data);
+                    console.log(JSON.stringify(JSONdata));
+                   
+                },
+                    error: function (XMLHttpRequest, textStatus, errorThrown)
+                    {
+                        alert ('Error : ' + errorThrown);
+                    }
+                });
+                return false;
+            });
+            });
+            // var xhr = new XMLHttpRequest();
+
+            // // ハンドラの登録.
+            // xhr.onreadystatechange = function() {
+            //     switch (xhr.readyState) {
+            //         case 4: // データ受信完了.
+            //         　var data = xhr.responseText;
+            //         　console.log( 'response:' + data );
+            //         break;
+            //     }
+            // }
+            // xhr.open( 'POST', '../info.php', false);
+            // // POST 送信の場合は Content-Type は固定.
+            // xhr.setRequestHeader( 'Content-Type', 'application/json' );
+            // // 
+            // xhr.send( JSON.stringify({value: "aaa"}));
+            // xhr.abort(); // 再利用する際にも abort() しないと再利用できないらしい.
+        </script>
         <script src="../script/select.js"></script>
     </body>
 </html>

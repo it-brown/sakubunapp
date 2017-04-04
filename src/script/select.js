@@ -7,6 +7,30 @@ $(function() {
             selectId: selectId,
             text: text
         }
+        
         parent.changePage("sentencepage.html", params)
     })
 })
+
+// $(document).ready(function()
+// {
+
+//     var data = {request : $('dataWhen').val()};
+
+//     $.ajax({
+//         type: "POST",
+//         url: "../info.php",
+//         data: data,
+
+//         success: function(data, dataType)
+//     {
+//         alert(data);
+//     },
+//         error: function (XMLHttpRequest, textStatus, errorThrown)
+//         {
+//             alert ('Error : ' + errorThrown);
+//         }
+//     });
+//     return false;
+// });
+
